@@ -8,9 +8,11 @@ module.exports = React.createClass({
 		if (true) { Title = Title; }
 
 		return (
-			<h1 className="StoryTitle">
-				{Title}
-			</h1>
+			<div className="titleBackground">
+  			<h1 className="StoryTitle">
+  				{Title}
+  			</h1>
+			</div>
 		);
 	}
 });
