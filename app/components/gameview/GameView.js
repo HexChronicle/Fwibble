@@ -6,6 +6,7 @@ var StoryBox = require('./StoryBox.js');
 var StoryInput = require('./StoryInput.js');
 var Fwib = require('./Fwib.js');
 var UsersInRoom = require('./UsersInRoom.js');
+var WordCountMeter = require('./WordCountMeter.js')
 
 var io = require('socket.io-client');
 var socket = io.connect();
@@ -106,6 +107,8 @@ module.exports = React.createClass({
     }
     var inputForm = this.state.myTurn ? (<StoryInput onFwibSubmit={this.handleFwibSubmit} user={this.state.user} />) : null;
 
+    var wordMeter = this.state.myTurn ? (<StoryInput onFwibSubmit={this.handleFwibSubmit} user={this.state.user} />) : null;
+
 		return (
 			<div>
         <div className="container">
@@ -116,16 +119,17 @@ module.exports = React.createClass({
           </div>
           <div>
             <div className="row">
-              <div className="col-md-9">
+              <div className="col-md-8">
                 <StoryBox fwibs={this.state.fwibs} />
+                <br />
+                {inputForm}
+                <br />
+                {wordMeter}
               </div>
-              <div className="col-md-2">
+              <div className="col-md-2 col-md-offset-1">
         				<UsersInRoom users={this.state.users} />
               </div>
             </div>
-          </div>
-          <div className="col-md-9">
-            {inputForm}
           </div>
         </div>
 			</div>
